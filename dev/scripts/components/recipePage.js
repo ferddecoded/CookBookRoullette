@@ -1,25 +1,11 @@
 import React from "react";
 
-class RecipePage extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            poop: ''
-        }
-    }
-
-    componentDidMount() {
-        this.setState({
-            poop: this.props
-        })
-    }
-    
-    render() {
-        console.log(this.props.data)
-      return (
-        <h2>{this.props.data}</h2>
-      )
-    }
-  }
+const RecipePage = (props) => {
+    return (
+        <div>
+            <h2>{props.data.name}</h2>
+        </div>
+    )
+}
 
 export default RecipePage;

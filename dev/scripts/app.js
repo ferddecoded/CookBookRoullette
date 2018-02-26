@@ -29,7 +29,7 @@ class App extends React.Component {
       cuisine: '',
       recipeCatalog: [],
       recipes: [],
-      recipeDisplay: false
+      recipeIndex: undefined 
     }
 
     this.cuisineChange = this.cuisineChange.bind(this);
@@ -37,6 +37,7 @@ class App extends React.Component {
     this.displayRecipe = this.displayRecipe.bind(this);
     this.addRecipe = this.addRecipe.bind(this);
     this.removeRecipe = this.removeRecipe.bind(this);
+    this.updateIndex = this.updateIndex.bind(this);
   }
 
   cuisineChange(e) {
@@ -45,6 +46,15 @@ class App extends React.Component {
     this.setState({
       cuisine: e.target.value
     })
+  }
+
+  updateIndex(index) {
+    console.log("update index");
+    console.log(index);
+    this.setState({
+      recipeIndex: index
+    })
+
   }
 
  addRecipe(value) {
@@ -195,29 +205,42 @@ class App extends React.Component {
             <h1>Search,Shop,Dine</h1>
   
             <div className="optionsButtons">
-              <p>Search Recipes</p>
-              <p>Favorite Recipes</p>
+              <p onClick={this.showSearch}>Search Recipes</p>
+              <p onClick={this.showFavorites}>Favorite Recipes</p>
             </div>
           </div>
         </header>
+        
         <main className="search wrapper">
-          <div className="SearchContainer">
-            <form action="" onSubmit={this.getRecipeCatalog} className="searchContainerForm">
-              <label>
-                What kind of recipes will you be looking for today?
-                {/* give user select option to select the typ of cuisine they're interested that correlates with the recipes */}
-                <select value={this.state.cuisine} onChange={this.cuisineChange}>
-                  <option value="american">american</option>
-                  <option value="chinese">chinese</option>
-                  <option value="japanese">japanese</option>
-                  <option value="mexican">mexican</option>
-                  <option value="barbecue">barbecue</option>
-                  <option value="indian">indian</option>
-                </select>
-              </label>
-              <input type="submit" value="submit"/>
-              <div className="closeButton"><i className="fa fa-times"></i></div>
-            </form>
+
+          <div className="searchContainer">
+
+            <section className="searchContainerHolder">
+            <div className="searchCloseButton button">
+                
+              </div>
+
+              <form action="" onSubmit={this.getRecipeCatalog} className="searchContainerForm">
+                <label>
+                  What kind of recipes will you be looking for today?
+                  {/* give user select option to select the typ of cuisine they're interested that correlates with the recipes */}
+                  <select value={this.state.cuisine} onChange={this.cuisineChange}>
+                    <option value="american">american</option>
+                    <option value="chinese">chinese</option>
+                    <option value="japanese">japanese</option>
+                    <option value="mexican">mexican</option>
+                    <option value="barbecue">barbecue</option>
+                    <option value="indian">indian</option>
+                  </select>
+                </label>
+                <input type="submit" value="submit"/>
+              </form>
+
+              <div className="searchCloseButton button">
+                <i className="fa fa-times"></i>
+              </div>
+            </section>
+
             <div className="searchContainerResults">
               {this.state.recipeCatalog.map((recipe) => {
                 return (
@@ -225,20 +248,25 @@ class App extends React.Component {
                 )
               })}
             </div>
+
           </div>
-
-          <h2>Your Recipe Book</h2>
-          <div className="favoritesContainer">
-            {this.state.recipes.map((recipe, i) => {
-              return (
-                <FaveRecipe data={recipe} key={recipe.key} removeRecipe={this.removeRecipe} />
-
-              )
-            })}
-          </div>
-
-          <div className="Results">
-              <RecipePage />
+          <div className="favorites">
+  
+            <h2>Your Recipe Book</h2>
+            <div className="favoritesContainer">
+              {this.state.recipes.map((recipe, i) => {
+                return (
+                  <FaveRecipe data={recipe} key={recipe.key} removeRecipe={this.removeRecipe} recipeIndex={i} updateIndex={this.updateIndex}/>
+  
+                )
+              })}
+            </div>
+  
+            <div className="Results">
+                {this.state.recipeIndex !== undefined 
+                ?<RecipePage data={this.state.recipes[this.state.recipeIndex]} />
+                : null}
+            </div>
           </div>
         </main>
 
