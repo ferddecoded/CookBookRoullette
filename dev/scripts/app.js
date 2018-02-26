@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from "axios";
+import RecipePage from "./components/recipePage.js";
 import RecipeCard from "./components/recipeCard.js";
+import FaveRecipe from "./components/faveRecipe.js";
 
 // Initialize Firebase
 var config = {
@@ -26,13 +28,15 @@ class App extends React.Component {
     this.state = {
       cuisine: '',
       recipeCatalog: [],
-      recipes: []
+      recipes: [],
+      recipeDisplay: false
     }
 
     this.cuisineChange = this.cuisineChange.bind(this);
     this.getRecipeCatalog = this.getRecipeCatalog.bind(this);
-    this.displayRecipeCatalog = this.displayRecipeCatalog.bind(this);
+    this.displayRecipe = this.displayRecipe.bind(this);
     this.addRecipe = this.addRecipe.bind(this);
+    this.removeRecipe = this.removeRecipe.bind(this);
   }
 
   cuisineChange(e) {
@@ -52,20 +56,14 @@ class App extends React.Component {
     cookTime: value.totalTime,
     ingredients: value.ingredientLines,
     servingSize: value.numberOfServings,
-    url: value.attribution.url
+    url: value.attribution.url,
+    img: value.images[0].imageUrlsBySize["360"]
   }
   
   console.log(recipeData)
-  
   const recipeState = Array.from(this.state.recipes);
-  
   //look 
   const duplicateRecipe = this.state.recipes.find((item) => recipeData.url === item.url);
-  // const duplicateRecipe = this.state.recipes.find(function(item) {
-  //   console.log(item);
-  //   return recipeData.url === item.url;
-  // })
-  // console.log(duplicateRecipe === undefined);
   if (duplicateRecipe === undefined) {
     //then set state
     recipeState.push(recipeData);
@@ -78,29 +76,37 @@ class App extends React.Component {
   } else {
     console.log("error")
   }
-  
+ }
 
-  // let newRecipeState = recipeState.filter((recipe) => {
-  //   return recipe !== value
+ removeRecipe(value) {
+  console.log(value.key);
+  let removeId = value.key;
+  console.log("remove Recipe");
+  // const dbRef = firebase.database().ref(`/recipes/${removeId}`);
+  const dbRef = firebase.database().ref(`/recipes/${removeId}`).remove();
+  // console.log(this.state.recipes.find(item) => )
+  // dbRef.on("value", (snapshot) => {
+  //   // console.log("hey");
+  //   console.log(snapshot.val());
+  //   const data = snapshot.val();
+  //   // const state = [];
+  //   // for(let key in data) {
+  //   //   //console logs the individual key of each peice of data
+  //   //   // console.log(key);
+  //   //   //this get the information for the corresponding key
+  //   //   // console.log(data[key]);
+  //   //   //here we use the value stored in the key variable
+  //   //   //to access the object stored at that location
+  //   //   //then we add a new property to that object called key
+  //   //   //and assign it the value of, key
+  //   //   data[key].key = key;
+  //   //   state.push(data[key]);
+  //   // }
+  //   // console.log(state);
+  //   // this.setState({
+  //   //   recipes:state
+  //   // });
   // })
-  
-  // newRecipeState.push(value);
-  // this.setState({
-  //   recipes: newRecipeState
-  // })
-
-  // console.log(this.state.recipes.find((item) => value === item));
-
-  // const dbref = firebase.database().ref("/recipes");
-  // newRecipeState.forEach((recipe) => {
-  //   dbref.push(recipe)
-  // })
-
-  // for (let i = 0; i < recipeState.length; i++) {
-  //   if (recipeState[i] !== value) {
-  //     newRecipeState.push(value);
-  //   }
-  // }
  }
 
   getRecipeCatalog(e) {
@@ -150,7 +156,7 @@ class App extends React.Component {
     })
   }
 
-  displayRecipeCatalog(recipes) {
+  displayRecipe(recipes) {
     console.log(recipes);
   }
   
@@ -173,10 +179,10 @@ class App extends React.Component {
         data[key].key = key;
         state.push(data[key]);
       }
-      // console.log(state);
-      // this.setState({
-      //   todos:state
-      // });
+      console.log(state);
+      this.setState({
+        recipes:state
+      });
     })
   }
 
@@ -184,31 +190,57 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/* <Header /> */}
-        <section>
-          <form action="" onSubmit={this.getRecipeCatalog} className="wrapper">
-            <label>
-              What kind of recipes will you be looking for today?
-              {/* give user select option to select the typ of cuisine they're interested that correlates with the recipes */}
-              <select value={this.state.cuisine} onChange={this.cuisineChange}>
-                <option value="american">american</option>
-                <option value="chinese">chinese</option>
-                <option value="japanese">japanese</option>
-                <option value="mexican">mexican</option>
-                <option value="barbecue">barbecue</option>
-                <option value="indian">indian</option>
-              </select>
-            </label>
-            <input type="submit" value="submit"/>
-          </form>
-          <div className="searchContainer wrapper">
-            {this.state.recipeCatalog.map((recipe) => {
+        <header className="mainHeader">
+          <div className="mainHeaderHolder wrapper">
+            <h1>Search,Shop,Dine</h1>
+  
+            <div className="optionsButtons">
+              <p>Search Recipes</p>
+              <p>Favorite Recipes</p>
+            </div>
+          </div>
+        </header>
+        <main className="search wrapper">
+          <div className="SearchContainer">
+            <form action="" onSubmit={this.getRecipeCatalog} className="searchContainerForm">
+              <label>
+                What kind of recipes will you be looking for today?
+                {/* give user select option to select the typ of cuisine they're interested that correlates with the recipes */}
+                <select value={this.state.cuisine} onChange={this.cuisineChange}>
+                  <option value="american">american</option>
+                  <option value="chinese">chinese</option>
+                  <option value="japanese">japanese</option>
+                  <option value="mexican">mexican</option>
+                  <option value="barbecue">barbecue</option>
+                  <option value="indian">indian</option>
+                </select>
+              </label>
+              <input type="submit" value="submit"/>
+              <div className="closeButton"><i className="fa fa-times"></i></div>
+            </form>
+            <div className="searchContainerResults">
+              {this.state.recipeCatalog.map((recipe) => {
+                return (
+                  <RecipeCard data={recipe} key={recipe.id} recipeChange={this.recipeChange} addRecipe={this.addRecipe}/>
+                )
+              })}
+            </div>
+          </div>
+
+          <h2>Your Recipe Book</h2>
+          <div className="favoritesContainer">
+            {this.state.recipes.map((recipe, i) => {
               return (
-                <RecipeCard data={recipe} key={recipe.id} recipeChange={this.recipeChange} addRecipe={this.addRecipe}/>
+                <FaveRecipe data={recipe} key={recipe.key} removeRecipe={this.removeRecipe} />
+
               )
             })}
           </div>
-        </section>
+
+          <div className="Results">
+              <RecipePage />
+          </div>
+        </main>
 
       </div>
     )

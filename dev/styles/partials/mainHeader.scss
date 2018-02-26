@@ -1,0 +1,14 @@
+.mainHeader {
+    box-shadow: 3px 3px 8px grey;
+    background: white;
+
+    .mainHeaderHolder {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .optionsButtons {
+        display: flex;
+        justify-content: space-between;
+    }
+}
