@@ -2,18 +2,21 @@ $primaryFont: 'Playfair Display SC', serif;
 
 html {
     font-size: 62.5%; /* makes font 10px */
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 /* 2.4rems = base font size ✕ 2.4 */
 h1 {
     font-size: 2.4rem; /* equivalent of 24px */
     font-family: $primaryFont;
+    font-style: italic;
 }
 
 /* 2rems = base font size ✕ 2 */
 h2 {
     font-size: 1.8rem; /* equivalent of 20px */
     font-family: $primaryFont;
+    font-style: italic;
 }
 
 /* 1.6rems = base font size ✕ 1.6 */

@@ -5,10 +5,18 @@ const FaveRecipe = (props) => {
     console.log(props.data)
     return (
       <div className="faveContainer">
-        <h2>{props.data.name}</h2>
-        <div className="imageHolder"><img src={props.data.img} alt=""/></div>
-        <div><button onClick={() => props.updateIndex(props.recipeIndex)}>View Recipe</button></div>
-        <div><button onClick={() => props.removeRecipe(props.data)}>Delete Recipe</button></div>
+        <div className="faveContainerContent">
+            <div className="headerContainer">
+                <h2>{props.data.name}</h2>
+            </div>
+            <div className="imageHolder">
+                <img src={props.data.img} alt=""/>
+            </div>
+        </div>
+        <div className="faveButtonHolder">
+            <button onClick={() => props.updateIndex(props.recipeIndex)}>View Recipe</button>
+            <button onClick={() => props.removeRecipe(props.data)}>Delete Recipe</button>
+        </div>
       </div>
     )
   }

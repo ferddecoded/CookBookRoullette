@@ -12,8 +12,8 @@ const RecipeCard = (props) => {
             <img src={props.data.images[0].imageUrlsBySize["360"]} alt=""/>
           </div>
         </div>
-        <div>
-          <button onClick={() => props.addRecipe(props.data)}>Select Recipe</button>
+        <div className="buttonHolder">
+          <button onClick={() => props.addRecipe(props.data)}>Add Recipe</button>
         </div>
       </div>
     )

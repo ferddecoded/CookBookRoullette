@@ -29,15 +29,19 @@ class App extends React.Component {
       cuisine: '',
       recipeCatalog: [],
       recipes: [],
-      recipeIndex: undefined 
+      recipeIndex: undefined,
+      search: false,
+      favorites:false
     }
 
     this.cuisineChange = this.cuisineChange.bind(this);
     this.getRecipeCatalog = this.getRecipeCatalog.bind(this);
-    this.displayRecipe = this.displayRecipe.bind(this);
     this.addRecipe = this.addRecipe.bind(this);
     this.removeRecipe = this.removeRecipe.bind(this);
     this.updateIndex = this.updateIndex.bind(this);
+    this.showSearch = this.showSearch.bind(this);
+    this.showFavorites = this.showFavorites.bind(this);
+    this.toggleCompleted = this.toggleCompleted.bind(this);
   }
 
   cuisineChange(e) {
@@ -46,6 +50,20 @@ class App extends React.Component {
     this.setState({
       cuisine: e.target.value
     })
+  }
+
+  showSearch() {
+    console.log("show search")
+    this.state.search === false 
+    ?this.setState({search: true, favorites: false})
+    : null;
+  }
+
+  showFavorites() {
+    console.log("show search")
+    this.state.favorites === false 
+    ?this.setState({search: false, favorites: true})
+    : null;
   }
 
   updateIndex(index) {
@@ -61,10 +79,19 @@ class App extends React.Component {
    //we copy the array in order to change that value when it renders
   console.log(value);
 
+  const ingredients = value.ingredientLines.map((item) => {
+    return {
+      name: item,
+      completed: false
+    }
+  })
+
+  console.log(ingredients);
+
   let recipeData = {
     name: value.name,
     cookTime: value.totalTime,
-    ingredients: value.ingredientLines,
+    ingredients: ingredients,
     servingSize: value.numberOfServings,
     url: value.attribution.url,
     img: value.images[0].imageUrlsBySize["360"]
@@ -92,8 +119,12 @@ class App extends React.Component {
   console.log(value.key);
   let removeId = value.key;
   console.log("remove Recipe");
+  this.setState({
+    recipeIndex: undefined
+  })
   // const dbRef = firebase.database().ref(`/recipes/${removeId}`);
-  const dbRef = firebase.database().ref(`/recipes/${removeId}`).remove();
+  firebase.database().ref(`/recipes/${removeId}`).remove();
+  
   // console.log(this.state.recipes.find(item) => )
   // dbRef.on("value", (snapshot) => {
   //   // console.log("hey");
@@ -166,8 +197,38 @@ class App extends React.Component {
     })
   }
 
-  displayRecipe(recipes) {
-    console.log(recipes);
+  toggleCompleted(recipeKey, i) {
+    //same same, we need to make a new copy of the state
+    //then transform that
+
+    console.log(recipeKey);
+    console.log(i);
+
+    const ingreToUpdate = this.state.recipes.find((recipe) => {
+      return recipe.key === recipeKey;
+    })
+
+    console.log(ingreToUpdate)
+
+    const dbRef = firebase.database().ref(`/recipes/${recipeKey}`);
+
+    ingreToUpdate.ingredients[i].completed =  !ingreToUpdate.ingredients[i].completed;
+    
+    dbRef.set(ingreToUpdate)
+    // const todoToUpdate = this.state.todos.find((todo) => {
+    //   // console.log(todo);
+    //   // console.log(todoKey);
+    //   return todo.key === todoKey;
+    // });
+    // console.log(todoToUpdate);
+    // const dbref = firebase.database().ref(`/todos/${todoKey}`);
+    // //here we are using a ternary operator to toggle the completed boolean
+    // //with ternary you have a condition and the two paths
+    // //condition ? if the condition is true : if the condition is false
+    // todoToUpdate.completed = todoToUpdate.completed === true ? false: true;
+    // delete todoToUpdate.key;
+    // dbref.set(todoToUpdate);
+
   }
   
   componentDidMount() {
@@ -205,69 +266,83 @@ class App extends React.Component {
             <h1>Search,Shop,Dine</h1>
   
             <div className="optionsButtons">
-              <p onClick={this.showSearch}>Search Recipes</p>
-              <p onClick={this.showFavorites}>Favorite Recipes</p>
+              <button onClick={this.showSearch}>Search Recipes</button>
+              <button onClick={this.showFavorites}>Favorite Recipes</button>
             </div>
           </div>
         </header>
         
         <main className="search wrapper">
 
-          <div className="searchContainer">
+          {this.state.search === true
+          ?
+            <div className="searchContainer">
+              <section className="searchContainerHolder">
+                <div className="searchCloseButton button">
+                </div>
 
-            <section className="searchContainerHolder">
-            <div className="searchCloseButton button">
-                
+                <div className="formHolder">
+                  <form action="" onSubmit={this.getRecipeCatalog} className="searchContainerForm">
+                    <label>
+                      Let's lookup a Cuisine
+                    </label>
+                      <div className="formSelect">
+                        <select value={this.state.cuisine} onChange={this.cuisineChange}>
+                          <option value="american">american</option>
+                          <option value="chinese">chinese</option>
+                          <option value="japanese">japanese</option>
+                          <option value="mexican">mexican</option>
+                          <option value="barbecue">barbecue</option>
+                          <option value="indian">indian</option>
+                        </select>
+                      </div>
+                    <input type="submit" value="submit"/>
+                  </form>
+                </div>
+
+                <div className="searchCloseButton button">
+                  <i className="fa fa-times"></i>
+                </div>
+              </section>
+
+              <div className="searchContainerResults">
+                {this.state.recipeCatalog.map((recipe) => {
+                  return (
+                    <RecipeCard data={recipe} key={recipe.id} recipeChange={this.recipeChange} addRecipe={this.addRecipe}/>
+                  )
+                })}
               </div>
+            </div>
+          :
+            null
+          }
 
-              <form action="" onSubmit={this.getRecipeCatalog} className="searchContainerForm">
-                <label>
-                  What kind of recipes will you be looking for today?
-                  {/* give user select option to select the typ of cuisine they're interested that correlates with the recipes */}
-                  <select value={this.state.cuisine} onChange={this.cuisineChange}>
-                    <option value="american">american</option>
-                    <option value="chinese">chinese</option>
-                    <option value="japanese">japanese</option>
-                    <option value="mexican">mexican</option>
-                    <option value="barbecue">barbecue</option>
-                    <option value="indian">indian</option>
-                  </select>
-                </label>
-                <input type="submit" value="submit"/>
-              </form>
 
-              <div className="searchCloseButton button">
-                <i className="fa fa-times"></i>
+          {this.state.favorites === true
+            ?
+              <div className="favorites">
+                <div className="favoritesHeader">
+                  <h2>Your Recipe Book</h2>
+                </div>
+                <div className="Results">
+                    <h2>empty</h2>
+                    {this.state.recipeIndex !== undefined 
+                    ?<RecipePage data={this.state.recipes[this.state.recipeIndex]} toggleCompleted={this.toggleCompleted} />
+                    : null}
+                </div>
+                <div className="favoritesContainer">
+                  {this.state.recipes.map((recipe, i) => {
+                    return (
+                      <FaveRecipe data={recipe} key={recipe.key} removeRecipe={this.removeRecipe} recipeIndex={i}  updateIndex={this.updateIndex}/>
+      
+                    )
+                  })}
+                </div>
+      
               </div>
-            </section>
-
-            <div className="searchContainerResults">
-              {this.state.recipeCatalog.map((recipe) => {
-                return (
-                  <RecipeCard data={recipe} key={recipe.id} recipeChange={this.recipeChange} addRecipe={this.addRecipe}/>
-                )
-              })}
-            </div>
-
-          </div>
-          <div className="favorites">
-  
-            <h2>Your Recipe Book</h2>
-            <div className="favoritesContainer">
-              {this.state.recipes.map((recipe, i) => {
-                return (
-                  <FaveRecipe data={recipe} key={recipe.key} removeRecipe={this.removeRecipe} recipeIndex={i} updateIndex={this.updateIndex}/>
-  
-                )
-              })}
-            </div>
-  
-            <div className="Results">
-                {this.state.recipeIndex !== undefined 
-                ?<RecipePage data={this.state.recipes[this.state.recipeIndex]} />
-                : null}
-            </div>
-          </div>
+            :
+              null
+          }
         </main>
 
       </div>

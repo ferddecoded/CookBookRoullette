@@ -1,3 +1,30 @@
+.imageHolder {
+    width: 100%;
+}
+
+.searchContainerHolder {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.searchContainer,
+.favorites {
+    min-height: 600px;
+    margin: 20px 0;
+    padding: 20px;
+    box-shadow: 3px 3px 3px black;
+    border-radius: 5px;
+    background: white;
+
+    .searchCloseButton {
+        width: 25%;
+        justify-content: flex-end;
+        display: flex;
+        padding: 20px;
+    }
+}
+
+
 .searchContainerResults,
 .favoritesContainer {
     display: grid;
@@ -5,14 +32,15 @@
     grid-gap: 20px;
 }
 
-.searchContainer {
-    height: 600px;
-}
-
-.recipeContainer {
+.recipeContainer,
+.faveContainer {
     height: 250px;
+    border: 1px solid orange;
+    padding: 10px 15px;
+    border-radius: 5px;
     
-    .recipeContainerContent {
+    .recipeContainerContent,
+    .faveContainerContent {
         position: relative;
         &:hover .headerContainer {
             opacity: .8;
@@ -33,6 +61,38 @@
         }
     }
 }
-.imageHolder {
-    width: 100%;
+
+.favorites .favoritesHeader {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+
+.formHolder {
+    width:50%;
+    .searchContainerForm {
+        display: flex; 
+        align-items: center;
+        
+        label,
+        .formSelect,
+        input[type=submit] {
+            margin-left: 20px;
+        }
+    }
+}
+
+.faveButtonHolder {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.mainRecipeDisplay {
+    display: flex;
+}
+
+.favoritesContainer {
+    flex-direction: column;
 }
