@@ -1,0 +1,484 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.wrapper {
+  max-width: 1200px;
+  width: 80%;
+  margin: 0 auto; }
+
+img {
+  width: 100%; }
+
+body {
+  background-image: url("./../../images/toa-heftiba-530185-unsplash.jpg");
+  background-attachment: fixed;
+  background-size: cover; }
+
+button,
+input[type=submit] {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1.6rem; }
+
+.formSelect {
+  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+  height: 29px;
+  overflow: hidden;
+  width: 240px;
+  border: 1px solid black; }
+
+.formSelect select {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px;
+  /* If you add too much padding here, the options won't show in IE */
+  width: 268px; }
+
+.styled-select.slate {
+  background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+  height: 34px;
+  width: 240px; }
+
+.imageHolder {
+  width: 100%;
+  max-width: 250px; }
+
+label {
+  font-size: 1.8rem; }
+
+.searchContainerHolder {
+  display: flex;
+  justify-content: flex-end; }
+
+.searchContainer,
+.favorites {
+  margin: 50px 0;
+  padding: 20px;
+  box-shadow: 3px 3px 3px black;
+  border-radius: 5px;
+  background: white; }
+  .searchContainer .searchCloseButton,
+  .favorites .searchCloseButton {
+    width: 25%;
+    justify-content: flex-end;
+    display: flex;
+    padding: 20px; }
+
+.searchContainerResults,
+.favoritesContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px; }
+
+.formHolder {
+  width: 100%;
+  display: flex;
+  justify-content: center; }
+  .formHolder .searchContainerForm {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 75%;
+    justify-content: center; }
+    .formHolder .searchContainerForm label,
+    .formHolder .searchContainerForm .formSelect,
+    .formHolder .searchContainerForm input[type=submit] {
+      margin-left: 20px; }
+
+.recipeContainer,
+.faveContainer {
+  height: 410px;
+  border: 1px solid #e4d751;
+  padding: 20px 15px;
+  border-radius: 5px;
+  position: relative;
+  text-align: center; }
+
+.headerContainer {
+  transition: .2s all ease;
+  height: 90px;
+  text-align: center;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.searchButtonHolder {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; }
+
+.favorites .favoritesHeader {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0; }
+
+.faveButtonHolder {
+  display: flex;
+  justify-content: center;
+  padding: 10px; }
+
+.favoritesContainer {
+  flex-direction: column;
+  position: relative; }
+
+@media (max-width: 1200px) {
+  .recipeContainer,
+  .faveContainer {
+    height: 360px; } }
+
+@media (max-width: 900px) {
+  .recipeContainer,
+  .faveContainer {
+    height: 300px; } }
+
+@media (max-width: 764px) {
+  .searchContainerResults,
+  .favoritesContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px; } }
+
+@media (max-width: 650px) {
+  .searchContainerForm {
+    flex-direction: column; }
+  label,
+  .formSelect,
+  input[type=submit] {
+    margin-left: 0;
+    margin-bottom: 20px; } }
+
+@media (max-width: 600px) {
+  .searchContainerResults,
+  .favoritesContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px; }
+  .recipeContainer,
+  .faveContainer {
+    height: 360px; } }
+
+@media (max-width: 480px) {
+  .recipeContainer,
+  .faveContainer {
+    height: 280px; } }
+
+.mainHeader {
+  box-shadow: 3px 3px 8px grey;
+  background: white; }
+  .mainHeader .mainHeaderHolder {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0; }
+  .mainHeader .optionsButtons {
+    display: flex;
+    justify-content: space-between; }
+  .mainHeader .optionsButtons button {
+    margin: 0 15px; }
+
+@media (max-width: 900px) {
+  .mainHeaderHolder {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .mainHeaderHolder .optionsButtons {
+      margin-top: 20px;
+      font-size: 1.4rem; } }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+  display: block; }
+
+audio, canvas, video {
+  display: inline-block; }
+
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+[hidden] {
+  display: none; }
+
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+a:focus {
+  outline: thin dotted; }
+
+a:active, a:hover {
+  outline: 0; }
+
+h1 {
+  font-size: 2em; }
+
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+b, strong {
+  font-weight: 700; }
+
+dfn {
+  font-style: italic; }
+
+mark {
+  background: #ff0;
+  color: #000; }
+
+code, kbd, pre, samp {
+  font-family: monospace, serif;
+  font-size: 1em; }
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word; }
+
+q {
+  quotes: \201C \201D \2018 \2019; }
+
+small {
+  font-size: 80%; }
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -.5em; }
+
+sub {
+  bottom: -.25em; }
+
+img {
+  border: 0; }
+
+svg:not(:root) {
+  overflow: hidden; }
+
+fieldset {
+  border: 1px solid silver;
+  margin: 0 2px;
+  padding: .35em .625em .75em; }
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0; }
+
+button, input {
+  line-height: normal; }
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer; }
+
+button[disabled], input[disabled] {
+  cursor: default; }
+
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0; }
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box; }
+
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+textarea {
+  overflow: auto;
+  vertical-align: top; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body, figure {
+  margin: 0; }
+
+legend, button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: '';
+  clear: both;
+  height: 0; }
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.mainRecipeHolder {
+  display: flex;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .mainRecipeHolder aside {
+    width: 50%;
+    height: 200px; }
+  .mainRecipeHolder aside.right {
+    padding: 0px 0 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; }
+  .mainRecipeHolder aside.bottom {
+    width: 100%;
+    align-items: center;
+    display: flex; }
+
+.mainRecipeDisplay,
+.ingredientList {
+  width: 48%;
+  flex-wrap: wrap; }
+
+.mainRecipeDisplay {
+  border: 1px solid #D4C62E;
+  border-radius: 5px;
+  height: 350px; }
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  height: 350px;
+  padding: 15px;
+  background-image: url("./../../../images/lined_paper.png");
+  border-radius: 10px;
+  overflow: scroll; }
+  ul li {
+    width: 50%;
+    margin: 10px 0;
+    font-size: 2rem; }
+
+.mainRecipeImg {
+  width: 170px; }
+
+.mainRecipeInfo {
+  display: flex; }
+
+.completed {
+  color: lightgrey;
+  text-decoration: line-through; }
+
+.mainRecipeDisplay {
+  display: flex; }
+
+@media (max-width: 950px) {
+  .favorites {
+    text-align: center; }
+  .mainRecipeHolder {
+    flex-direction: column;
+    align-items: center; }
+    .mainRecipeHolder .mainRecipeDisplay,
+    .mainRecipeHolder .ingredientList {
+      width: 70%;
+      flex-wrap: wrap;
+      margin-bottom: 50px; }
+    .mainRecipeHolder .mainRecipeDisplay {
+      padding: 15px; } }
+
+@media (max-width: 700px) {
+  .mainRecipeInfo {
+    flex-direction: column;
+    align-items: center; }
+  .mainRecipeHolder .mainRecipeDisplay,
+  .mainRecipeHolder .ingredientList {
+    width: 100%; }
+  .mainRecipeImg {
+    width: 100%;
+    margin-bottom: 20px; }
+  aside.left {
+    margin-bottom: 0;
+    height: 200px; }
+  aside.right {
+    height: 160px; }
+  .mainRecipeDisplay {
+    height: 500px;
+    align-items: center; }
+  .mainRecipeHolder aside.right {
+    width: 100%;
+    align-items: center; }
+  .mainRecipeDisplay {
+    padding: 0; }
+  span.moreInfo {
+    display: none; }
+  .bottom {
+    display: flex;
+    justify-content: center;
+    width: 100%; } }
+
+@charset "UTF-8";
+html {
+  font-size: 62.5%;
+  /* makes font 10px */
+  font-family: 'Josefin Sans', sans-serif; }
+
+/* 2.4rems = base font size ✕ 2.4 */
+h1 {
+  font-size: 4rem;
+  /* equivalent of 24px */
+  font-family: "Playfair Display SC", serif;
+  font-style: italic;
+  color: #D4C62E;
+  text-shadow: 2px 2px 0px black; }
+
+/* 2rems = base font size ✕ 2 */
+h2 {
+  font-size: 2rem;
+  /* equivalent of 20px */
+  font-family: "Playfair Display SC", serif;
+  font-style: italic; }
+
+h3 {
+  font-size: 1.6rem;
+  /* equivalent of 20px */
+  font-family: "Josefin Sans", sans-serif;
+  font-style: italic;
+  margin-bottom: 20px; }
+
+h4 {
+  font-size: 2rem;
+  /* equivalent of 20px */
+  font-family: "Josefin Sans", sans-serif;
+  font-style: italic;
+  margin-bottom: 20px; }
+
+h5 {
+  font-size: 1.6rem;
+  /* equivalent of 20px */
+  font-family: "Josefin Sans", sans-serif;
+  font-style: italic; }
+
+/* 1.6rems = base font size ✕ 1.6 */
+p {
+  font-size: 1.6rem;
+  /* equivalent of 16px */
+  display: inline;
+  line-height: 10px; }
+
+span {
+  color: #D4C62E; }
+
+a {
+  text-decoration: none;
+  background: #D4C62E;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px; }
+
+@media (max-width: 450px) {
+  h1 {
+    font-size: 3rem; } }
