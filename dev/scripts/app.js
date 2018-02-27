@@ -94,7 +94,9 @@ class App extends React.Component {
     ingredients: ingredients,
     servingSize: value.numberOfServings,
     url: value.attribution.url,
-    img: value.images[0].imageUrlsBySize["360"]
+    img: value.images[0].imageUrlsBySize["360"],
+    prepTime: value.prepTime
+
   }
   
   console.log(recipeData)
@@ -122,32 +124,7 @@ class App extends React.Component {
   this.setState({
     recipeIndex: undefined
   })
-  // const dbRef = firebase.database().ref(`/recipes/${removeId}`);
   firebase.database().ref(`/recipes/${removeId}`).remove();
-  
-  // console.log(this.state.recipes.find(item) => )
-  // dbRef.on("value", (snapshot) => {
-  //   // console.log("hey");
-  //   console.log(snapshot.val());
-  //   const data = snapshot.val();
-  //   // const state = [];
-  //   // for(let key in data) {
-  //   //   //console logs the individual key of each peice of data
-  //   //   // console.log(key);
-  //   //   //this get the information for the corresponding key
-  //   //   // console.log(data[key]);
-  //   //   //here we use the value stored in the key variable
-  //   //   //to access the object stored at that location
-  //   //   //then we add a new property to that object called key
-  //   //   //and assign it the value of, key
-  //   //   data[key].key = key;
-  //   //   state.push(data[key]);
-  //   // }
-  //   // console.log(state);
-  //   // this.setState({
-  //   //   recipes:state
-  //   // });
-  // })
  }
 
   getRecipeCatalog(e) {
@@ -161,11 +138,11 @@ class App extends React.Component {
         format: 'json',
         requirePictures: true,
         'allowedCuisine[]': `cuisine^cuisine-${this.state.cuisine}`,
-        "allowedCourse[]": "course^course-Main Dishes"
+        "allowedCourse[]": "course^course-Main Dishes",
+        "maxResult": 12
       }
     })
     .then((res) => {
-      // console.log(res);
       const recipeData = res.data.matches;
       console.log(recipeData);
       let recipeId = recipeData.map((recipe) => {
@@ -215,38 +192,16 @@ class App extends React.Component {
     ingreToUpdate.ingredients[i].completed =  !ingreToUpdate.ingredients[i].completed;
     
     dbRef.set(ingreToUpdate)
-    // const todoToUpdate = this.state.todos.find((todo) => {
-    //   // console.log(todo);
-    //   // console.log(todoKey);
-    //   return todo.key === todoKey;
-    // });
-    // console.log(todoToUpdate);
-    // const dbref = firebase.database().ref(`/todos/${todoKey}`);
-    // //here we are using a ternary operator to toggle the completed boolean
-    // //with ternary you have a condition and the two paths
-    // //condition ? if the condition is true : if the condition is false
-    // todoToUpdate.completed = todoToUpdate.completed === true ? false: true;
-    // delete todoToUpdate.key;
-    // dbref.set(todoToUpdate);
 
   }
   
   componentDidMount() {
     const dbref = firebase.database().ref("/recipes");
     dbref.on("value", (snapshot) => {
-      // console.log("hey");
       console.log(snapshot.val());
       const data = snapshot.val();
       const state = [];
       for(let key in data) {
-        //console logs the individual key of each peice of data
-        // console.log(key);
-        //this get the information for the corresponding key
-        // console.log(data[key]);
-        //here we use the value stored in the key variable
-        //to access the object stored at that location
-        //then we add a new property to that object called key
-        //and assign it the value of, key
         data[key].key = key;
         state.push(data[key]);
       }
@@ -277,9 +232,8 @@ class App extends React.Component {
           {this.state.search === true
           ?
             <div className="searchContainer">
+
               <section className="searchContainerHolder">
-                <div className="searchCloseButton button">
-                </div>
 
                 <div className="formHolder">
                   <form action="" onSubmit={this.getRecipeCatalog} className="searchContainerForm">
@@ -298,10 +252,6 @@ class App extends React.Component {
                       </div>
                     <input type="submit" value="submit"/>
                   </form>
-                </div>
-
-                <div className="searchCloseButton button">
-                  <i className="fa fa-times"></i>
                 </div>
               </section>
 
@@ -322,10 +272,9 @@ class App extends React.Component {
             ?
               <div className="favorites">
                 <div className="favoritesHeader">
-                  <h2>Your Recipe Book</h2>
+                  <h1>Your Recipe Book</h1>
                 </div>
                 <div className="Results">
-                    <h2>empty</h2>
                     {this.state.recipeIndex !== undefined 
                     ?<RecipePage data={this.state.recipes[this.state.recipeIndex]} toggleCompleted={this.toggleCompleted} />
                     : null}

@@ -1,15 +1,32 @@
 .mainHeader {
     box-shadow: 3px 3px 8px grey;
     background: white;
-    height: 50px;
 
     .mainHeaderHolder {
         display: flex;
         justify-content: space-between;
+        padding: 20px 0;
     }
 
     .optionsButtons {
         display: flex;
         justify-content: space-between;
+    }
+
+    .optionsButtons button {
+        margin: 0 15px;
+    }
+}
+
+@media (max-width: 900px) {
+    .mainHeaderHolder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .optionsButtons {
+            margin-top: 20px;
+            font-size: 1.4rem;
+        }
     }
 }

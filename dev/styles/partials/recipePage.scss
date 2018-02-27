@@ -1,0 +1,143 @@
+.mainRecipeHolder {
+    display: flex;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    aside {
+        width: 50%;
+        height: 200px;
+    }
+    
+    aside.right {
+        padding: 0px 0 15px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    aside.bottom {
+        width: 100%;
+        align-items: center;
+        display: flex;
+    }
+}
+
+.mainRecipeDisplay,
+.ingredientList {
+    width: 48%;
+    flex-wrap: wrap;
+}
+
+.mainRecipeDisplay {
+    border: 1px solid #D4C62E;
+    border-radius: 5px;
+    height: 350px;
+}
+
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    height: 350px;
+    padding: 15px;
+    background-image: url("../../../images/lined_paper.png");
+    border-radius: 10px;
+    overflow: scroll;
+    
+    li {
+        width: 50%;
+        margin: 10px 0;
+        font-size: 2rem;
+    }
+}
+
+.mainRecipeImg {
+    width: 170px;
+}
+
+.mainRecipeInfo {
+    display: flex;
+}
+
+.completed {
+    color: lightgrey;
+    text-decoration: line-through;
+}
+
+.mainRecipeDisplay {
+    display: flex;
+}
+
+@media (max-width: 950px) {
+    .favorites {
+        text-align: center;
+    }
+
+    .mainRecipeHolder {
+        flex-direction: column;
+        align-items: center;
+
+        .mainRecipeDisplay,
+        .ingredientList {
+            width: 70%;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .mainRecipeDisplay {
+            padding: 15px;
+        }
+    }
+}
+
+@media (max-width:700px) {
+    .mainRecipeInfo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mainRecipeHolder .mainRecipeDisplay,
+    .mainRecipeHolder .ingredientList {
+        width: 100%;
+    }
+
+    .mainRecipeImg {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    aside.left {
+        margin-bottom: 0;
+        height: 200px;
+    }
+
+    aside.right {
+        height: 160px;
+    }
+
+    .mainRecipeDisplay {
+        height: 500px;
+        align-items: center;
+    }
+
+    .mainRecipeHolder aside.right {
+        width: 100%;
+        align-items: center;
+    }
+
+    .mainRecipeDisplay {
+        padding: 0;
+    }
+
+    span.moreInfo {
+        display: none;
+    }
+
+    .bottom {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+}

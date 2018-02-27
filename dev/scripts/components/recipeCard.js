@@ -6,13 +6,13 @@ const RecipeCard = (props) => {
       <div className="recipeContainer">
         <div className="recipeContainerContent">
           <div className="headerContainer">
-            <h2>{props.data.name}</h2>
+            <h3>{props.data.name}</h3>
           </div>
           <div className="imageHolder">
             <img src={props.data.images[0].imageUrlsBySize["360"]} alt=""/>
           </div>
         </div>
-        <div className="buttonHolder">
+        <div className="searchButtonHolder">
           <button onClick={() => props.addRecipe(props.data)}>Add Recipe</button>
         </div>
       </div>

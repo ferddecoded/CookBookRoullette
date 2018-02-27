@@ -1,0 +1,172 @@
+
+
+.imageHolder {
+    width: 100%;
+    max-width: 250px;
+}
+// styling for search
+label  {
+    font-size: 1.8rem;
+} 
+.searchContainerHolder {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.searchContainer,
+.favorites {
+    margin: 50px 0;
+    padding: 20px;
+    box-shadow: 3px 3px 3px black;
+    border-radius: 5px;
+    background: white;
+
+    .searchCloseButton {
+        width: 25%;
+        justify-content: flex-end;
+        display: flex;
+        padding: 20px;
+    }
+}
+
+
+.searchContainerResults,
+.favoritesContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.formHolder {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    .searchContainerForm {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        width: 75%;
+        justify-content: center;
+
+        
+        label,
+        .formSelect,
+        input[type=submit] {
+            margin-left: 20px;
+        }
+    }
+}
+
+.recipeContainer,
+.faveContainer {
+    height: 410px;
+    border: 1px solid rgb(228, 215, 81);
+    padding: 20px 15px;
+    border-radius: 5px;
+    position: relative;
+    text-align: center;
+    
+    i.fa-times {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 10px;
+        font-size: 1.6rem;
+    
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.headerContainer {
+    transition: .2s all ease;
+    height: 90px;
+    text-align: center;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchButtonHolder {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.favorites .favoritesHeader {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+
+
+.faveButtonHolder {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.favoritesContainer {
+    flex-direction: column;
+    position: relative;
+}
+
+@media (max-width: 1200px) {
+    .recipeContainer,
+    .faveContainer {
+        height: 360px;
+    }
+}
+
+@media (max-width: 900px) {
+    .recipeContainer,
+    .faveContainer {
+        height: 300px;
+    }
+}
+
+@media (max-width: 764px) {
+
+    .searchContainerResults,
+    .favoritesContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+    }
+}
+
+@media(max-width: 650px) {
+    .searchContainerForm {
+        flex-direction: column;
+    }
+
+    label,
+    .formSelect,
+    input[type=submit] {
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .searchContainerResults,
+    .favoritesContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+    .recipeContainer,
+    .faveContainer {
+        height: 360px;
+    }
+}
+@media (max-width: 480px) {
+    .recipeContainer,
+    .faveContainer {
+        height: 280px;
+    }
+}

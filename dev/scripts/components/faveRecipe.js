@@ -7,7 +7,7 @@ const FaveRecipe = (props) => {
       <div className="faveContainer">
         <div className="faveContainerContent">
             <div className="headerContainer">
-                <h2>{props.data.name}</h2>
+                <h3>{props.data.name}</h3>
             </div>
             <div className="imageHolder">
                 <img src={props.data.img} alt=""/>
@@ -15,7 +15,7 @@ const FaveRecipe = (props) => {
         </div>
         <div className="faveButtonHolder">
             <button onClick={() => props.updateIndex(props.recipeIndex)}>View Recipe</button>
-            <button onClick={() => props.removeRecipe(props.data)}>Delete Recipe</button>
+            <i onClick={() => props.removeRecipe(props.data)} className="fa fa-times"></i>
         </div>
       </div>
     )
