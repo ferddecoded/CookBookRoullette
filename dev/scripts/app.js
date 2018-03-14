@@ -95,7 +95,7 @@ class App extends React.Component {
     servingSize: value.numberOfServings,
     url: value.attribution.url,
     img: value.images[0].imageUrlsBySize["360"],
-    prepTime: value.prepTime
+    calories: value.nutritionEstimates[0].value
 
   }
   

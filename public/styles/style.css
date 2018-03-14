@@ -327,9 +327,11 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   flex-wrap: wrap;
   justify-content: space-between; }
   .mainRecipeHolder aside {
-    width: 50%;
     height: 200px; }
+  .mainRecipeHolder aside.left {
+    width: 40%; }
   .mainRecipeHolder aside.right {
+    width: 60%;
     padding: 0px 0 15px 20px;
     display: flex;
     flex-direction: column;
@@ -363,8 +365,8 @@ ul {
     margin: 10px 0;
     font-size: 2rem; }
 
-.mainRecipeImg {
-  width: 170px; }
+.bottom {
+  width: 100%; }
 
 .mainRecipeInfo {
   display: flex; }
@@ -384,7 +386,7 @@ ul {
     align-items: center; }
     .mainRecipeHolder .mainRecipeDisplay,
     .mainRecipeHolder .ingredientList {
-      width: 70%;
+      width: 100%;
       flex-wrap: wrap;
       margin-bottom: 50px; }
     .mainRecipeHolder .mainRecipeDisplay {

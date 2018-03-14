@@ -5,11 +5,15 @@
     justify-content: space-between;
     
     aside {
-        width: 50%;
         height: 200px;
+    }
+
+    aside.left {
+       width: 40%;
     }
     
     aside.right {
+       width: 60%;
         padding: 0px 0 15px 20px;
         display: flex;
         flex-direction: column;
@@ -53,8 +57,8 @@ ul {
     }
 }
 
-.mainRecipeImg {
-    width: 170px;
+.bottom {
+    width: 100%;
 }
 
 .mainRecipeInfo {
@@ -81,7 +85,7 @@ ul {
 
         .mainRecipeDisplay,
         .ingredientList {
-            width: 70%;
+            width: 100%;
             flex-wrap: wrap;
             margin-bottom: 50px;
         }
