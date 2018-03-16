@@ -112,9 +112,10 @@ ul {
         margin-bottom: 20px;
     }
 
-    aside.left {
+    .mainRecipeHolder aside.left {
         margin-bottom: 0;
-        height: 200px;
+        width: 80%;
+        height: 280px;
     }
 
     aside.right {
@@ -124,6 +125,7 @@ ul {
     .mainRecipeDisplay {
         height: 500px;
         align-items: center;
+        flex-direction: column;
     }
 
     .mainRecipeHolder aside.right {
@@ -144,4 +146,11 @@ ul {
         justify-content: center;
         width: 100%;
     }
+}
+
+
+@media (max-width: 400px) {
+   .mainRecipeHolder aside.left {
+      height: 230px;
+   }
 }

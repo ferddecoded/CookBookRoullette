@@ -6,6 +6,12 @@ $secondaryColor: #F45D01;
     padding: 0;
 }
 
+@import "./partials/normalize";
+@import "./partials/typography";
+@import "./partials/containers";
+@import "./partials/mainHeader";
+@import "./partials/recipePage";
+
 .wrapper {
     max-width: 1200px;
     width: 80%;
@@ -22,11 +28,19 @@ body {
     background-size: cover; 
 }
 
+
 button,
 input[type=submit] {
-    padding: 5px 10px;;
-    border-radius: 5px;
-    font-size: 1.6rem;
+   padding: 5px 10px;;
+   border-radius: 5px;
+   font-size: 1.6rem;
+   background: lightgoldenrodyellow;
+   // padding: 10px 15px;
+   transition: .3s all ease;
+   
+   &:hover {
+      background: yellow;
+   }
 }
 
 .formSelect {
@@ -51,3 +65,13 @@ input[type=submit] {
     height: 34px;
     width: 240px;
  }
+
+ @media (max-width: 380px) {
+    .formHolder .searchContainerForm label, .formHolder .searchContainerForm .formSelect, .formHolder .searchContainerForm input[type=submit] {
+      margin-left: 0px;
+   }
+
+   .wrapper {
+      width: 95%;
+   }
+}

@@ -15,7 +15,7 @@ const FaveRecipe = (props) => {
         </div>
         <div className="faveButtonHolder">
             <button onClick={() => props.updateIndex(props.recipeIndex)}>View Recipe</button>
-            <button onClick={() => props.removeRecipe(props.data)}><i className="fa fa-times"></i></button>
+            <button className="removeButton" onClick={() => props.removeRecipe(props.data)}><i className="fa fa-times"></i></button>
         </div>
       </div>
     )

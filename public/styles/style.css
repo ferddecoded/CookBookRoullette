@@ -1,192 +1,7 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0; }
-
-.wrapper {
-  max-width: 1200px;
-  width: 80%;
-  margin: 0 auto; }
-
-img {
-  width: 100%; }
-
-body {
-  background-image: url("./../../images/toa-heftiba-530185-unsplash.jpg");
-  background-attachment: fixed;
-  background-size: cover; }
-
-button,
-input[type=submit] {
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 1.6rem; }
-
-.formSelect {
-  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
-  height: 29px;
-  overflow: hidden;
-  width: 240px;
-  border: 1px solid black; }
-
-.formSelect select {
-  background: transparent;
-  border: none;
-  font-size: 14px;
-  height: 29px;
-  padding: 5px;
-  /* If you add too much padding here, the options won't show in IE */
-  width: 268px; }
-
-.styled-select.slate {
-  background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
-  height: 34px;
-  width: 240px; }
-
-.imageHolder {
-  width: 100%;
-  max-width: 250px; }
-
-label {
-  font-size: 1.8rem; }
-
-.searchContainerHolder {
-  display: flex;
-  justify-content: flex-end; }
-
-.searchContainer,
-.favorites {
-  margin: 50px 0;
-  padding: 20px;
-  box-shadow: 3px 3px 3px black;
-  border-radius: 5px;
-  background: white; }
-  .searchContainer .searchCloseButton,
-  .favorites .searchCloseButton {
-    width: 25%;
-    justify-content: flex-end;
-    display: flex;
-    padding: 20px; }
-
-.searchContainerResults,
-.favoritesContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px; }
-
-.formHolder {
-  width: 100%;
-  display: flex;
-  justify-content: center; }
-  .formHolder .searchContainerForm {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    width: 75%;
-    justify-content: center; }
-    .formHolder .searchContainerForm label,
-    .formHolder .searchContainerForm .formSelect,
-    .formHolder .searchContainerForm input[type=submit] {
-      margin-left: 20px; }
-
-.recipeContainer,
-.faveContainer {
-  height: 410px;
-  border: 1px solid #e4d751;
-  padding: 20px 15px;
-  border-radius: 5px;
-  position: relative;
-  text-align: center; }
-
-.headerContainer {
-  transition: .2s all ease;
-  height: 90px;
-  text-align: center;
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-
-.searchButtonHolder {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px; }
-
-.favorites .favoritesHeader {
-  display: flex;
-  justify-content: center;
-  padding: 20px 0; }
-
-.faveButtonHolder {
-  display: flex;
-  justify-content: center;
-  padding: 10px; }
-
-.favoritesContainer {
-  flex-direction: column;
-  position: relative; }
-
-@media (max-width: 1200px) {
-  .recipeContainer,
-  .faveContainer {
-    height: 360px; } }
-
-@media (max-width: 900px) {
-  .recipeContainer,
-  .faveContainer {
-    height: 300px; } }
-
-@media (max-width: 764px) {
-  .searchContainerResults,
-  .favoritesContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px; } }
-
-@media (max-width: 650px) {
-  .searchContainerForm {
-    flex-direction: column; }
-  label,
-  .formSelect,
-  input[type=submit] {
-    margin-left: 0;
-    margin-bottom: 20px; } }
-
-@media (max-width: 600px) {
-  .searchContainerResults,
-  .favoritesContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px; }
-  .recipeContainer,
-  .faveContainer {
-    height: 360px; } }
-
-@media (max-width: 480px) {
-  .recipeContainer,
-  .faveContainer {
-    height: 280px; } }
-
-.mainHeader {
-  box-shadow: 3px 3px 8px grey;
-  background: white; }
-  .mainHeader .mainHeaderHolder {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 0; }
-  .mainHeader .optionsButtons {
-    display: flex;
-    justify-content: space-between; }
-  .mainHeader .optionsButtons button {
-    margin: 0 15px; }
-
-@media (max-width: 900px) {
-  .mainHeaderHolder {
-    display: flex;
-    flex-direction: column;
-    align-items: center; }
-    .mainHeaderHolder .optionsButtons {
-      margin-top: 20px;
-      font-size: 1.4rem; } }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
   display: block; }
@@ -321,6 +136,219 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+html {
+  font-size: 62.5%;
+  /* makes font 10px */
+  font-family: 'Josefin Sans', sans-serif; }
+
+/* 2.4rems = base font size ✕ 2.4 */
+h1 {
+  font-size: 4rem;
+  /* equivalent of 24px */
+  font-family: "Playfair Display SC", serif;
+  font-style: italic;
+  color: #D4C62E;
+  text-shadow: 2px 2px 0px black; }
+
+/* 2rems = base font size ✕ 2 */
+h2 {
+  font-size: 2rem;
+  /* equivalent of 20px */
+  font-family: "Playfair Display SC", serif;
+  font-style: italic; }
+
+h3 {
+  font-size: 1.6rem;
+  /* equivalent of 20px */
+  font-family: "Josefin Sans", sans-serif;
+  font-style: italic;
+  margin-bottom: 20px; }
+
+h4 {
+  font-size: 2rem;
+  /* equivalent of 20px */
+  font-family: "Josefin Sans", sans-serif;
+  font-style: italic;
+  margin-bottom: 20px; }
+
+h5 {
+  font-size: 1.6rem;
+  /* equivalent of 20px */
+  font-family: "Josefin Sans", sans-serif;
+  font-style: italic; }
+
+/* 1.6rems = base font size ✕ 1.6 */
+p {
+  font-size: 1.6rem;
+  /* equivalent of 16px */
+  display: inline;
+  line-height: 10px; }
+
+span {
+  color: #D4C62E; }
+
+a {
+  text-decoration: none;
+  background: #D4C62E;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px; }
+
+@media (max-width: 450px) {
+  h1 {
+    font-size: 3rem; } }
+
+.imageHolder {
+  width: 100%;
+  max-width: 250px; }
+
+label {
+  font-size: 1.8rem; }
+
+.searchContainerHolder {
+  display: flex;
+  justify-content: flex-end; }
+
+.searchContainer,
+.favorites {
+  margin: 50px 0;
+  padding: 20px;
+  box-shadow: 3px 3px 3px black;
+  border-radius: 5px;
+  background: white; }
+  .searchContainer .searchCloseButton,
+  .favorites .searchCloseButton {
+    width: 25%;
+    justify-content: flex-end;
+    display: flex;
+    padding: 20px; }
+
+.searchContainerResults,
+.favoritesContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px; }
+
+.formHolder {
+  width: 100%;
+  display: flex;
+  justify-content: center; }
+  .formHolder .searchContainerForm {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 75%;
+    justify-content: center; }
+    .formHolder .searchContainerForm label,
+    .formHolder .searchContainerForm .formSelect,
+    .formHolder .searchContainerForm input[type=submit] {
+      margin-left: 20px; }
+
+.recipeContainer,
+.faveContainer {
+  height: 410px;
+  border: 1px solid #e4d751;
+  padding: 20px 15px;
+  border-radius: 5px;
+  position: relative;
+  text-align: center; }
+
+.headerContainer {
+  transition: .2s all ease;
+  height: 90px;
+  text-align: center;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.searchButtonHolder {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; }
+
+.favorites .favoritesHeader {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0; }
+
+.faveButtonHolder {
+  display: flex;
+  justify-content: center;
+  padding: 10px; }
+
+.favoritesContainer {
+  flex-direction: column;
+  position: relative; }
+
+.removeButton {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+@media (max-width: 1200px) {
+  .recipeContainer,
+  .faveContainer {
+    height: 360px; } }
+
+@media (max-width: 900px) {
+  .recipeContainer,
+  .faveContainer {
+    height: 300px; } }
+
+@media (max-width: 764px) {
+  .searchContainerResults,
+  .favoritesContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px; } }
+
+@media (max-width: 650px) {
+  .searchContainerForm {
+    flex-direction: column; }
+  label,
+  .formSelect,
+  input[type=submit] {
+    margin-left: 0;
+    margin-bottom: 20px; } }
+
+@media (max-width: 600px) {
+  .searchContainerResults,
+  .favoritesContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px; }
+  .recipeContainer,
+  .faveContainer {
+    height: 360px; } }
+
+@media (max-width: 480px) {
+  .recipeContainer,
+  .faveContainer {
+    height: 280px; } }
+
+.mainHeader {
+  box-shadow: 3px 3px 8px grey;
+  background: white; }
+  .mainHeader .mainHeaderHolder {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0; }
+  .mainHeader .optionsButtons {
+    display: flex;
+    justify-content: space-between; }
+  .mainHeader .optionsButtons button {
+    margin: 0 15px; }
+
+@media (max-width: 900px) {
+  .mainHeaderHolder {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .mainHeaderHolder .optionsButtons {
+      margin-top: 20px;
+      font-size: 1.4rem; } }
+
 .mainRecipeHolder {
   display: flex;
   margin-bottom: 50px;
@@ -402,14 +430,16 @@ ul {
   .mainRecipeImg {
     width: 100%;
     margin-bottom: 20px; }
-  aside.left {
+  .mainRecipeHolder aside.left {
     margin-bottom: 0;
-    height: 200px; }
+    width: 80%;
+    height: 280px; }
   aside.right {
     height: 160px; }
   .mainRecipeDisplay {
     height: 500px;
-    align-items: center; }
+    align-items: center;
+    flex-direction: column; }
   .mainRecipeHolder aside.right {
     width: 100%;
     align-items: center; }
@@ -422,65 +452,57 @@ ul {
     justify-content: center;
     width: 100%; } }
 
-@charset "UTF-8";
-html {
-  font-size: 62.5%;
-  /* makes font 10px */
-  font-family: 'Josefin Sans', sans-serif; }
+@media (max-width: 400px) {
+  .mainRecipeHolder aside.left {
+    height: 230px; } }
 
-/* 2.4rems = base font size ✕ 2.4 */
-h1 {
-  font-size: 4rem;
-  /* equivalent of 24px */
-  font-family: "Playfair Display SC", serif;
-  font-style: italic;
-  color: #D4C62E;
-  text-shadow: 2px 2px 0px black; }
+.wrapper {
+  max-width: 1200px;
+  width: 80%;
+  margin: 0 auto; }
 
-/* 2rems = base font size ✕ 2 */
-h2 {
-  font-size: 2rem;
-  /* equivalent of 20px */
-  font-family: "Playfair Display SC", serif;
-  font-style: italic; }
+img {
+  width: 100%; }
 
-h3 {
+body {
+  background-image: url("./../../images/toa-heftiba-530185-unsplash.jpg");
+  background-attachment: fixed;
+  background-size: cover; }
+
+button,
+input[type=submit] {
+  padding: 5px 10px;
+  border-radius: 5px;
   font-size: 1.6rem;
-  /* equivalent of 20px */
-  font-family: "Josefin Sans", sans-serif;
-  font-style: italic;
-  margin-bottom: 20px; }
+  background: lightgoldenrodyellow;
+  transition: .3s all ease; }
+  button:hover,
+  input[type=submit]:hover {
+    background: yellow; }
 
-h4 {
-  font-size: 2rem;
-  /* equivalent of 20px */
-  font-family: "Josefin Sans", sans-serif;
-  font-style: italic;
-  margin-bottom: 20px; }
+.formSelect {
+  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+  height: 29px;
+  overflow: hidden;
+  width: 240px;
+  border: 1px solid black; }
 
-h5 {
-  font-size: 1.6rem;
-  /* equivalent of 20px */
-  font-family: "Josefin Sans", sans-serif;
-  font-style: italic; }
+.formSelect select {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px;
+  /* If you add too much padding here, the options won't show in IE */
+  width: 268px; }
 
-/* 1.6rems = base font size ✕ 1.6 */
-p {
-  font-size: 1.6rem;
-  /* equivalent of 16px */
-  display: inline;
-  line-height: 10px; }
+.styled-select.slate {
+  background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+  height: 34px;
+  width: 240px; }
 
-span {
-  color: #D4C62E; }
-
-a {
-  text-decoration: none;
-  background: #D4C62E;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px; }
-
-@media (max-width: 450px) {
-  h1 {
-    font-size: 3rem; } }
+@media (max-width: 380px) {
+  .formHolder .searchContainerForm label, .formHolder .searchContainerForm .formSelect, .formHolder .searchContainerForm input[type=submit] {
+    margin-left: 0px; }
+  .wrapper {
+    width: 95%; } }

@@ -65,18 +65,6 @@ label  {
     border-radius: 5px;
     position: relative;
     text-align: center;
-    
-    // i.fa-times {
-    //     position: absolute;
-    //     right: 0;
-    //     top: 0;
-    //     margin: 15px;
-    //     font-size: 2rem;
-    
-    //     &:hover {
-    //         cursor: pointer;
-    //     }
-    // }
 }
 
 .headerContainer {
@@ -100,8 +88,6 @@ label  {
     padding: 20px 0;
 }
 
-
-
 .faveButtonHolder {
     display: flex;
     justify-content: center;
@@ -111,6 +97,12 @@ label  {
 .favoritesContainer {
     flex-direction: column;
     position: relative;
+}
+
+.removeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 @media (max-width: 1200px) {
